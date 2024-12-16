@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="card w-fit bg-blue-100 shadow-xl mx-auto">
+    <div class="card-body pb-2">
+        <h1 class="card-title border-b border-b-slate-600 pb-[4px]">
+            {% block title %}Log In{% endblock %}
+        </h1>
+        <form class="rounded-xl drop-shadow-xl flex flex-col gap-4 w-96 p-8 bg-white" action="" method="post"
+            hx-swap="transition:true">
+            <label class="flex flex-col justify-start gap-2">
+                Username:
+                <input class="input input-bordered input-primary bg-blue-50 text-blue-900" type="text" name="username" required
+                    autofocus {% if g.user %}disabled value="disabled" {% endif %}>
+            </label>
+            <label class="flex flex-col justify-start gap-2">
+                Password:
+                <input class="input input-bordered input-primary bg-blue-50 text-blue-900" type="password" name="password" required
+                    {% if g.user %}disabled value="disabled" {% endif %}>
+            </label>
+            <footer class="card-actions justify-end">
+                <button class="badge badge-primary px-6 py-4 hover:scale-[1.1]" {% if g.user %}disabled{% endif %}>
+                    Log In
+                </button>
+            </footer>
+        </form>
+    </div>
+</section>
+{% endblock %}

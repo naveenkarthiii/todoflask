@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f4f4f9; /* Light neutral background */
+    color: #2c3e50; /* Dark slate text color for good contrast */
+    margin: 0;
+    padding: 0;
+}
+
+/* Keyframes for animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-from-right {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-to-left {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+}
+
+/* Define animations for the old and new content */
+::view-transition-old(slide-it) {
+    animation: 300ms ease-in both fade-out, 
+               600ms ease-in-out both slide-to-left;
+}
+
+::view-transition-new(slide-it) {
+    animation: 400ms ease-out 100ms both fade-in, 
+               600ms ease-in-out both slide-from-right;
+}
+
+/* Apply the view transition to a specific class */
+.sample-transition {
+    view-transition-name: slide-it;
+    background-color: #ffffff; /* White card-style background */
+    border: 1px solid #dcdde1; /* Light border for definition */
+    border-radius: 8px; /* Subtle rounding for a modern feel */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px;
+    margin: 20px;
+}
+
+/* Additional hover effect for interactive elements */
+.sample-transition:hover {
+    background-color: #f0f8ff; /* Light blue background on hover */
+    transform: scale(1.02); /* Slight zoom effect */
+    transition: background-color 200ms ease, transform 200ms ease;
+}
